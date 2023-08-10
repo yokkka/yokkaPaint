@@ -46,7 +46,6 @@ namespace yokkaPaint
                     break;
             }
 
-            Text = Convert.ToString($"{paintBoxX}, {paintBoxY}, {paintBox.Location.Y}");
             paintBox.Location = new Point(paintBoxX, paintBoxY);
 
         }
@@ -54,6 +53,7 @@ namespace yokkaPaint
         private void Form1_Load(object sender, EventArgs e)
         {
             brushSizeController.ValueChanged += new EventHandler(changeBrushSize);
+            colorPicker.AllowFullOpen = true;
 
         }
 
@@ -94,7 +94,7 @@ namespace yokkaPaint
         {
             if (drawMode)
             {
-                pen = new Pen(Brushes.Aqua);
+                pen = new Pen(colorPanel.BackColor);
                 pen.Width = BrushSize
                     ;
                 pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Bevel;
@@ -128,6 +128,12 @@ namespace yokkaPaint
         private void arrowLeft(object sender, EventArgs e)
         {
             ChangePaintBoxPos("a");
+        }
+
+        private void openColorPicker(object sender, EventArgs e)
+        {
+            colorPicker.ShowDialog();
+            colorPanel.BackColor = colorPicker.Color;
         }
     }
 }

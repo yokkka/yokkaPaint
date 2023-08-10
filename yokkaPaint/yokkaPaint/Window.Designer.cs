@@ -37,8 +37,13 @@
             brushSizeController = new NumericUpDown();
             arrowRightButton = new Button();
             arrowLeftButton = new Button();
+            colorPicker = new ColorDialog();
+            colorPanel = new Panel();
+            panel1 = new Panel();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)paintBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)brushSizeController).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // openFileButton
@@ -126,11 +131,42 @@
             arrowLeftButton.UseVisualStyleBackColor = true;
             arrowLeftButton.Click += arrowLeft;
             // 
+            // colorPicker
+            // 
+            colorPicker.ShowHelp = true;
+            // 
+            // colorPanel
+            // 
+            colorPanel.BackColor = SystemColors.ControlLight;
+            colorPanel.Cursor = Cursors.Hand;
+            colorPanel.ForeColor = Color.CornflowerBlue;
+            colorPanel.Location = new Point(374, 4);
+            colorPanel.Name = "colorPanel";
+            colorPanel.Size = new Size(29, 27);
+            colorPanel.TabIndex = 9;
+            colorPanel.Click += openColorPicker;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(panel2);
+            panel1.Location = new Point(-4, -12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(132, 461);
+            panel1.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(120, 14);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(685, 39);
+            panel2.TabIndex = 11;
+            // 
             // yWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(colorPanel);
             Controls.Add(arrowLeftButton);
             Controls.Add(arrowRightButton);
             Controls.Add(brushSizeController);
@@ -138,13 +174,15 @@
             Controls.Add(penButton);
             Controls.Add(arrowDownButton);
             Controls.Add(arrowUpButton);
-            Controls.Add(paintBox);
             Controls.Add(openFileButton);
+            Controls.Add(panel1);
+            Controls.Add(paintBox);
             Name = "yWindow";
             Text = "yokkaPaint C#";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)paintBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)brushSizeController).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -159,5 +197,9 @@
         private NumericUpDown brushSizeController;
         private Button arrowRightButton;
         private Button arrowLeftButton;
+        private ColorDialog colorPicker;
+        private Panel colorPanel;
+        private Panel panel1;
+        private Panel panel2;
     }
 }
